@@ -14,6 +14,7 @@ before_script:
 script:
   # run
   - mkdir temp
+  - vendor/bin/phpstan analyse -l 7 -c phpstan.neon src tests
   - vendor/bin/phpunit --configuration tests/phpunit.xml tests
 
 after_script:

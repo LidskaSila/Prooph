@@ -25,6 +25,7 @@
   "require-dev": {
 	"mockery/mockery": "^0.9",
 	"phpunit/phpunit": "^6.2",
-    "nette/bootstrap": "^2.4"
+    "nette/bootstrap": "^2.4",
+    "phpstan/phpstan": "^0.7"
   }
 }
