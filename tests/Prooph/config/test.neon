@@ -1,0 +1,40 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	event_sourcing:
+		aggregate_repository:
+			test_repository:
+				repository_class: LidskaSila\Prooph\Tests\FakeImplementations\MemoryTestRepository
+				aggregate_type: LidskaSila\Prooph\Tests\FakeImplementations\TestAggregateRoot
+				aggregate_translator: Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator
+				one_stream_per_aggregate: true
+	event_store:
+		use:
+			config: default
+			factory: Prooph\EventStore\Container\InMemoryEventStoreFactory
+		default:
+			plugins:
+				- Prooph\EventStoreBusBridge\EventPublisher
+	service_bus:
+		command_bus:
+			plugins:
+				- Prooph\ServiceBus\Plugin\InvokeStrategy\HandleCommandStrategy
+			router:
+				routes:
+		event_bus:
+			plugins:
+				- Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
+			router:
+				routes:
+		query_bus:
+			plugins:
+			router:
+				routes:
+
+services:
+	onEventStrategy: Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
+	- Prooph\ServiceBus\Plugin\InvokeStrategy\HandleCommandStrategy
+	- Prooph\EventStoreBusBridge\EventPublisher
+	- Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator
+	- Prooph\Common\Messaging\FQCNMessageFactory

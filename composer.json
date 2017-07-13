@@ -1,0 +1,30 @@
+{
+  "name" : "lidskasila/nette-prooph",
+  "description" : "Nette extension for original Prooph toolbox of CQRS and EventSourcing Infrastructure for PHP.",
+  "license" : "MIT",
+  "autoload" : {
+	"psr-4" : {
+	  "LidskaSila\\Prooph\\" : "src/"
+	}
+  },
+  "require" : {
+	"php" : ">=7.0",
+	"prooph/event-sourcing" : "^5.2",
+	"prooph/service-bus": "^6.0",
+	"psr/container": "^1.0",
+	"sandrokeil/interop-config": "^2.1",
+	"prooph/event-store-bus-bridge": "^3.0",
+    "nette/di": "^2.4",
+    "nette/robot-loader": "^3.0"
+  },
+  "autoload-dev" : {
+	"classmap" : [
+	  "tests/"
+	]
+  },
+  "require-dev": {
+	"mockery/mockery": "^0.9",
+	"phpunit/phpunit": "^6.2",
+    "nette/bootstrap": "^2.4"
+  }
+}
