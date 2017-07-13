@@ -14,8 +14,7 @@
 	"psr/container": "^1.0",
 	"sandrokeil/interop-config": "^2.1",
 	"prooph/event-store-bus-bridge": "^3.0",
-    "nette/di": "^2.4",
-    "nette/robot-loader": "^3.0"
+    "nette/di": "^2.4"
   },
   "autoload-dev" : {
 	"classmap" : [
