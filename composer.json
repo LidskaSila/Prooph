@@ -1,5 +1,5 @@
 {
-  "name" : "lidskasila/nette-prooph",
+  "name" : "lidskasila/prooph",
   "description" : "Nette extension for original Prooph toolbox of CQRS and EventSourcing Infrastructure for PHP.",
   "license" : "MIT",
   "autoload" : {
