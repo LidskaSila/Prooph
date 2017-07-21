@@ -1,10 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators;
+namespace LidskaSila\Prooph\ServiceBus;
 
-use LidskaSila\Prooph\Configurators\ServiceBusConfigurators\CommandBusConfigurator;
-use LidskaSila\Prooph\Configurators\ServiceBusConfigurators\EventBusConfigurator;
-use LidskaSila\Prooph\Configurators\ServiceBusConfigurators\QueryBusConfigurator;
+use LidskaSila\Prooph\Common\CompositeConfigurator;
+use LidskaSila\Prooph\Common\Configurator;
+use LidskaSila\Prooph\ServiceBus\ServiceBusConfigurators\CommandBusConfigurator;
+use LidskaSila\Prooph\ServiceBus\ServiceBusConfigurators\EventBusConfigurator;
+use LidskaSila\Prooph\ServiceBus\ServiceBusConfigurators\QueryBusConfigurator;
 
 class ServiceBusesConfigurator extends CompositeConfigurator
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators\ServiceBusConfigurators;
+namespace LidskaSila\Prooph\ServiceBus\ServiceBusConfigurators;
 
-use LidskaSila\Prooph\Configurators\DefaultConfigurator;
+use LidskaSila\Prooph\Common\DefaultConfigurator;
 use Prooph\Common\Messaging\MessageFactory;
 use Prooph\ServiceBus\MessageBus;
 

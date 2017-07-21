@@ -1,7 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Tests\Configurators;
+namespace LidskaSila\Prooph\Tests\EventStore;
 
+use LidskaSila\Prooph\Tests\Configurators\ProophExtensionTestCase;
 use Prooph\EventStore\EventStore;
 
 class EventStoreConfiguratorTest extends ProophExtensionTestCase

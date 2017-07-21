@@ -1,7 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators;
+namespace LidskaSila\Prooph\EventSourcing;
 
+use LidskaSila\Prooph\Common\DefaultConfigurator;
 use Prooph\EventSourcing\Aggregate\AggregateRepository;
 use Prooph\EventSourcing\Container\Aggregate\AggregateRepositoryFactory;
 

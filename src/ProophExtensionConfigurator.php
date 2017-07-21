@@ -2,11 +2,11 @@
 
 namespace LidskaSila\Prooph;
 
-use LidskaSila\Prooph\Configurators\CompositeConfigurator;
-use LidskaSila\Prooph\Configurators\Configurator;
-use LidskaSila\Prooph\Configurators\EventSourcingConfigurator;
-use LidskaSila\Prooph\Configurators\EventStoreConfigurator;
-use LidskaSila\Prooph\Configurators\ServiceBusesConfigurator;
+use LidskaSila\Prooph\Common\CompositeConfigurator;
+use LidskaSila\Prooph\Common\Configurator;
+use LidskaSila\Prooph\EventSourcing\EventSourcingConfigurator;
+use LidskaSila\Prooph\EventStore\EventStoreConfigurator;
+use LidskaSila\Prooph\ServiceBus\ServiceBusesConfigurator;
 
 class ProophExtensionConfigurator extends CompositeConfigurator
 {

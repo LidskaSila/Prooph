@@ -1,9 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators;
+namespace LidskaSila\Prooph\Common;
 
 use LidskaSila\Prooph\ProophExtension;
-use Nette\PhpGenerator\Method;
 
 abstract class CompositeConfigurator extends DefaultConfigurator
 {

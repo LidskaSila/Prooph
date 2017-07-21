@@ -2,8 +2,8 @@
 
 namespace LidskaSila\Prooph;
 
+use LidskaSila\Prooph\Common\Configurator;
 use LidskaSila\Prooph\Common\NetteContainerWrapper;
-use LidskaSila\Prooph\Configurators\Configurator;
 use Nette\DI\CompilerExtension;
 use Nette\DI\ContainerBuilder;
 

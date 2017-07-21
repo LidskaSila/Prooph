@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators;
+namespace LidskaSila\Prooph\Common;
 
 interface Configurator
 {

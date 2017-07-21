@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Tests\FakeImplementations;
+namespace LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations;
 
 use Prooph\EventSourcing\AggregateChanged;
 use Prooph\EventSourcing\AggregateRoot;

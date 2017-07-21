@@ -5,8 +5,8 @@ prooph:
 	event_sourcing:
 		aggregate_repository:
 			test_repository:
-				repository_class: LidskaSila\Prooph\Tests\FakeImplementations\MemoryTestRepository
-				aggregate_type: LidskaSila\Prooph\Tests\FakeImplementations\TestAggregateRoot
+				repository_class: LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations\MemoryTestRepository
+				aggregate_type: LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations\TestAggregateRoot
 				aggregate_translator: Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator
 				one_stream_per_aggregate: true
 	event_store:

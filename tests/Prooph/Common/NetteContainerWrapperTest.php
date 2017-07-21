@@ -3,6 +3,7 @@
 namespace LidskaSila\Prooph\Tests\Configurators;
 
 use LidskaSila\Prooph\Common\NetteContainerWrapper;
+use LidskaSila\Prooph\Common\NetteContainerWrapper\ContainerException;
 use LidskaSila\Prooph\Common\NetteContainerWrapper\NotFoundException;
 use Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy;
 
@@ -27,7 +28,7 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 	{
 		$this->givenNetteContainerWrapper();
 
-		$this->willThrowException(NetteContainerWrapper\ContainerException::class);
+		$this->willThrowException(ContainerException::class);
 
 		$this->whenGetByKey(new \DateTime());
 	}

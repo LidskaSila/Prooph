@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators\ServiceBusConfigurators;
+namespace LidskaSila\Prooph\ServiceBus\ServiceBusConfigurators;
 
 use Prooph\ServiceBus\Container\EventBusFactory;
 use Prooph\ServiceBus\EventBus;

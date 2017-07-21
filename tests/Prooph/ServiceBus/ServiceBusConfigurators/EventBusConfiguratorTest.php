@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Tests\Configurators\ServiceBusConfigurators;
+namespace LidskaSila\Prooph\Tests\ServiceBus\Configurators\ServiceBusConfigurators;
 
 use LidskaSila\Prooph\Tests\Configurators\ProophExtensionTestCase;
 use Prooph\ServiceBus\EventBus;

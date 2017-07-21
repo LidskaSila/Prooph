@@ -1,8 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Tests\Configurators;
+namespace LidskaSila\Prooph\Tests\EventSourcing;
 
-use LidskaSila\Prooph\Tests\FakeImplementations\MemoryTestRepository;
+use LidskaSila\Prooph\Tests\Configurators\ProophExtensionTestCase;
+use LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations\MemoryTestRepository;
 
 class EventSourcingConfiguratorTest extends ProophExtensionTestCase
 {

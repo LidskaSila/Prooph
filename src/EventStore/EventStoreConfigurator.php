@@ -1,7 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LidskaSila\Prooph\Configurators;
+namespace LidskaSila\Prooph\EventStore;
 
+use LidskaSila\Prooph\Common\DefaultConfigurator;
 use Prooph\EventStore\EventStore;
 
 class EventStoreConfigurator extends DefaultConfigurator
