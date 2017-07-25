@@ -1,0 +1,14 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	event_store:
+		use:
+			config: default
+			factory: Prooph\EventStore\Container\InMemoryEventStoreFactory
+		default:
+			plugins:
+				- Prooph\EventStoreBusBridge\EventPublisher
+services:
+	- Prooph\EventStoreBusBridge\EventPublisher
+	- Prooph\Common\Messaging\FQCNMessageFactory

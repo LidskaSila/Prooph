@@ -9,21 +9,24 @@ use PHPUnit\Framework\TestCase;
 abstract class ProophExtensionTestCase extends TestCase
 {
 
+	private const CONFIGS_DIR = 'configs';
+	private const DEFAULT_TEST_FILE = 'test.neon';
+
 	/** @var Container */
 	protected $container;
 
-	protected function givenTestConfig()
+	protected function givenTestConfig($configPath = self::DEFAULT_TEST_FILE)
 	{
 		$config = new Configurator();
 		$config->setTempDirectory(TEMP_DIR);
-		$config->addConfig(__DIR__ . '/config/test.neon');
+		$config->addConfig(__DIR__ . '/' . self::CONFIGS_DIR . '/' . $configPath);
 
 		return $config;
 	}
 
-	protected function givenTestContainer()
+	protected function givenTestContainer($configPath = self::DEFAULT_TEST_FILE)
 	{
-		$testConfig = $this->givenTestConfig();
+		$testConfig = $this->givenTestConfig($configPath);
 
 		$this->container = $testConfig->createContainer();
 	}
