@@ -8,9 +8,11 @@ use LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations\MemoryTestReposito
 class EventSourcingConfiguratorTest extends ProophExtensionTestCase
 {
 
+	private const TEST_CONFIG_PATH = 'EventSourcingConfiguratorTest.neon';
+
 	public function testGetRepositoryByType_FromTestContainer_ShouldReturnExpectedInstance()
 	{
-		$this->givenTestContainer();
+		$this->givenTestContainer(self::TEST_CONFIG_PATH);
 
 		$repository = $this->whenGetServiceByTypeFromContainer(MemoryTestRepository::class);
 

@@ -78,7 +78,7 @@ class ProophExtension extends CompilerExtension
 
 	private function getContainerServiceId(ContainerBuilder $containerBuilder): string
 	{
-		return $containerBuilder->getByType(Container::class);
+		return (string) $containerBuilder->getByType(Container::class);
 	}
 }
 

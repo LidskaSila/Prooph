@@ -37,11 +37,11 @@ class EventSourcingConfigurator extends DefaultConfigurator
 				->getContainerBuilder()
 				->addDefinition($this->extension->prefix($repositoryConfigName))
 				->setClass($repositoryClass)
-				->setFactory(self::class . '::create', [ $repositoryConfigName, '@' . $containerWrapperServiceId ]);
+				->setFactory(self::class . '::createRepository', [ $repositoryConfigName, '@' . $containerWrapperServiceId ]);
 		}
 	}
 
-	public static function create($repositoryConfigName, $containerWrapperService): AggregateRepository
+	public static function createRepository($repositoryConfigName, $containerWrapperService): AggregateRepository
 	{
 		return AggregateRepositoryFactory::$repositoryConfigName($containerWrapperService);
 	}
