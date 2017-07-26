@@ -1,0 +1,14 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	service_bus:
+		event_bus:
+			plugins:
+				- Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
+			router:
+				routes:
+
+services:
+	- Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
+	- Prooph\Common\Messaging\FQCNMessageFactory

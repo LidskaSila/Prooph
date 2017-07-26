@@ -1,0 +1,14 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	service_bus:
+		command_bus:
+			plugins:
+				- Prooph\ServiceBus\Plugin\InvokeStrategy\HandleCommandStrategy
+			router:
+				routes:
+
+services:
+	- Prooph\ServiceBus\Plugin\InvokeStrategy\HandleCommandStrategy
+	- Prooph\Common\Messaging\FQCNMessageFactory

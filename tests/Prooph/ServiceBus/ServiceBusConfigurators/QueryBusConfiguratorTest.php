@@ -8,9 +8,11 @@ use Prooph\ServiceBus\QueryBus;
 class QueryBusConfiguratorTest extends ProophExtensionTestCase
 {
 
+	private const TEST_CONFIG_PATH = 'ServiceBusConfiguratorTests/CommandBusConfiguratorTest.neon';
+
 	public function testGetServiceBusByType_FromTestContainer_ShouldReturnExpectedInstance()
 	{
-		$this->givenTestContainer();
+		$this->givenTestContainer(self::TEST_CONFIG_PATH);
 
 		$repository = $this->whenGetServiceByTypeFromContainer(QueryBus::class);
 
