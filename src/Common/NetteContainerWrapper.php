@@ -2,11 +2,9 @@
 
 namespace LidskaSila\Prooph\Common;
 
-use Exception;
 use LidskaSila\Prooph\Common\NetteContainerWrapper\ContainerException;
 use LidskaSila\Prooph\Common\NetteContainerWrapper\NotFoundException;
 use Nette\DI\Container;
-use Nette\DI\ContainerBuilder;
 use Nette\DI\MissingServiceException;
 use Psr\Container\ContainerInterface;
 use Throwable;
@@ -33,16 +31,10 @@ class NetteContainerWrapper implements ContainerInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function get($id)
+	public function get($key)
 	{
 		try {
-			if ($this->isIdConfig($id)) {
-				return $this->config;
-			} elseif (strpos($id, '@') === 0) {
-				return $this->container->getService(ltrim($id, '@'));
-			} else {
-				return $this->container->getByType($id);
-			}
+			return $this->tryToGetByKey($key);
 		} catch (MissingServiceException $e) {
 			throw new NotFoundException($e->getMessage());
 		} catch (Throwable $e) {
@@ -53,19 +45,42 @@ class NetteContainerWrapper implements ContainerInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function has($id)
+	public function has($key)
 	{
-		if ($this->isIdConfig($id)) {
+		if ($this->isKeyConfig($key)) {
 			return (bool) $this->config;
-		} elseif (strpos($id, '@') === 0) {
-			return $this->container->hasService(ltrim($id, '@'));
-		} else {
-			return (bool) $this->container->getByType($id);
 		}
+		if ($this->isServiceId($key)) {
+			return $this->container->hasService($this->extractServiceId($key));
+		}
+
+		return (bool) $this->container->getByType($key);
 	}
 
-	private function isIdConfig($id): bool
+	private function tryToGetByKey($key)
 	{
-		return $id === 'config';
+		if ($this->isKeyConfig($key)) {
+			return $this->config;
+		}
+		if ($this->isServiceId($key)) {
+			return $this->container->getService($this->extractServiceId($key));
+		}
+
+		return $this->container->getByType($key);
+	}
+
+	private function isKeyConfig(string $key): bool
+	{
+		return $key === 'config';
+	}
+
+	private function isServiceId(string $key): bool
+	{
+		return strpos($key, '@') === 0;
+	}
+
+	private function extractServiceId(string $key): string
+	{
+		return ltrim($key, '@');
 	}
 }

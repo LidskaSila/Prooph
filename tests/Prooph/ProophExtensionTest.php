@@ -11,7 +11,7 @@ class ProophExtensionTest extends ProophExtensionTestCase
 
 	public function testGenerateContainer_WithConfiguredExtension_ShouldPass()
 	{
-		$config = $this->givenTestConfig();
+		$config = $this->givenTestConfig('FullTestConfig.neon');
 
 		$this->whenGenerateContainer($config);
 

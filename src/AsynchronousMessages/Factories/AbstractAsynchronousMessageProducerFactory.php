@@ -31,16 +31,6 @@ abstract class AbstractAsynchronousMessageProducerFactory implements RequiresCon
 	/**
 	 * Creates a new instance from a specified config, specifically meant to be used as static factory.
 	 *
-	 * In case you want to use another config key than provided by the factories, you can add the following factory to
-	 * your config:
-	 *
-	 * <code>
-	 * <?php
-	 * return [
-	 *     'prooph.service_bus.other' => [CommandBusFactory::class, 'other'],
-	 * ];
-	 * </code>
-	 *
 	 * @throws InvalidArgumentException
 	 */
 	public static function __callStatic(string $name, array $arguments): AsynchronousMessageProducer

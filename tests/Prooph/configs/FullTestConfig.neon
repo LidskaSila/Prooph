@@ -27,10 +27,18 @@ prooph:
 				- Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
 			router:
 				routes:
+				async_switch: "@prooph.asynchronous_messaging.events"
 		query_bus:
 			plugins:
 			router:
 				routes:
+	asynchronous_messaging:
+		events:
+			bridge: "@producerBridge"
+			routes:
+				LidskaSila\Prooph\Tests\EventSourcing\FakeImplementations\TestAggregateCreated: producerRouteKey
+		commands:
+			bridge: LidskaSila\Prooph\Tests\ServiceBus\AsynchronousMessages\FakeImplementations\TestAsynchronousMessageProducerBridge
 
 services:
 	onEventStrategy: Prooph\ServiceBus\Plugin\InvokeStrategy\OnEventStrategy
@@ -38,3 +46,6 @@ services:
 	- Prooph\EventStoreBusBridge\EventPublisher
 	- Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator
 	- Prooph\Common\Messaging\FQCNMessageFactory
+
+	producerBridge: LidskaSila\Prooph\Tests\AsynchronousMessages\FakeImplementations\TestAsynchronousMessageProducerBridge
+	- Prooph\Common\Messaging\NoOpMessageConverter

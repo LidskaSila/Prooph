@@ -8,19 +8,15 @@ use LidskaSila\Prooph\Tests\Configurators\ProophExtensionTestCase;
 class AsynchronousEventProducerConfiguratorTest extends ProophExtensionTestCase
 {
 
-	const TEST_PRODUCER_ROUTE_KEY = 'producerRouteKey';
+	const TEST_CONFIG           = 'AsynchronousMessages/AsynchronousEventProducerTest.neon';
+	const EXPECTED_SERVICE_NAME = 'prooph.asynchronous_messaging.events';
 
 	public function testGet_FromTestContainer_ShouldReturnExpectedInstance()
 	{
-		$this->givenTestContainer('AsynchronousMessages/AsynchronousEventProducerTest.neon');
+		$this->givenTestContainer(self::TEST_CONFIG);
 
-		$producer = $this->whenGetServiceByNameFromContainer('prooph.asynchronous_messaging.events');
+		$producer = $this->whenGetServiceByNameFromContainer(self::EXPECTED_SERVICE_NAME);
 
 		$this->thenIsInstanceOfExpectedClass(AsynchronousMessageProducer::class, $producer);
-	}
-
-	protected function setUp()
-	{
-		parent::setUp();
 	}
 }

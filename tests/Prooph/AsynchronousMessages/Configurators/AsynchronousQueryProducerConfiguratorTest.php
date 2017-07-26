@@ -8,19 +8,15 @@ use LidskaSila\Prooph\Tests\Configurators\ProophExtensionTestCase;
 class AsynchronousQueryProducerConfiguratorTest extends ProophExtensionTestCase
 {
 
-	const TEST_PRODUCER_ROUTE_KEY = 'producerRouteKey';
+	const TEST_CONFIG           = 'AsynchronousMessages/AsynchronousQueryProducerTest.neon';
+	const EXPECTED_SERVICE_NAME = 'prooph.asynchronous_messaging.queries';
 
 	public function testGet_FromTestContainer_ShouldReturnExpectedInstance()
 	{
-		$this->givenTestContainer('AsynchronousMessages/AsynchronousQueryProducerTest.neon');
+		$this->givenTestContainer(self::TEST_CONFIG);
 
-		$producer = $this->whenGetServiceByNameFromContainer('prooph.asynchronous_messaging.queries');
+		$producer = $this->whenGetServiceByNameFromContainer(self::EXPECTED_SERVICE_NAME);
 
 		$this->thenIsInstanceOfExpectedClass(AsynchronousMessageProducer::class, $producer);
-	}
-
-	protected function setUp()
-	{
-		parent::setUp();
 	}
 }

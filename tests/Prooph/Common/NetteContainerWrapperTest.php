@@ -15,10 +15,14 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 	/** @var NetteContainerWrapper */
 	protected $containerWrapper;
 
+	public function setUp()
+	{
+		parent::setUp();
+		$this->givenNetteContainerWrapper('FullTestConfig.neon');
+	}
+
 	public function testGet_NotExistingService_ShouldThrowNotFoundException()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$this->willThrowException(NotFoundException::class);
 
 		$this->whenGetByKey('not_existing');
@@ -26,8 +30,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testGet_WithInvalidParameter_ShouldThrowContainerException()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$this->willThrowException(ContainerException::class);
 
 		$this->whenGetByKey(new \DateTime());
@@ -35,8 +37,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testGet_ExistingServiceByType_ShouldReturnExpectedInstance()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$service = $this->whenGetByKey(OnEventStrategy::class);
 
 		$this->thenIsInstanceOfExpectedClass(OnEventStrategy::class, $service);
@@ -44,8 +44,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testGet_ExistingServiceById_ShouldReturnExpectedInstance()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$service = $this->whenGetByKey('@onEventStrategy');
 
 		$this->thenIsInstanceOfExpectedClass(OnEventStrategy::class, $service);
@@ -53,8 +51,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testGet_Config_ShouldReturnExpectedConfig()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$actualConfig = $this->whenGetByKey('config');
 
 		$this->thenIsExpectedConfig($actualConfig);
@@ -62,8 +58,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testHas_ExistingServiceByType_ShouldReturnTrue()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$has = $this->whenAskIfHasKey(OnEventStrategy::class);
 
 		$this->thenResultIsTrue($has);
@@ -71,8 +65,6 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testHas_ExistingServiceById_ShouldReturnTrue()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$has = $this->whenAskIfHasKey('@onEventStrategy');
 
 		$this->thenResultIsTrue($has);
@@ -80,16 +72,14 @@ class NetteContainerWrapperTest extends ProophExtensionTestCase
 
 	public function testHas_Config_ShouldReturnTrue()
 	{
-		$this->givenNetteContainerWrapper();
-
 		$has = $this->whenAskIfHasKey('config');
 
 		$this->thenResultIsTrue($has);
 	}
 
-	private function givenNetteContainerWrapper()
+	private function givenNetteContainerWrapper(string $configName)
 	{
-		$this->givenTestContainer();
+		$this->givenTestContainer($configName);
 		$config                 = $this->givenFakeConfig();
 		$this->containerWrapper = new NetteContainerWrapper($config, $this->container);
 	}
