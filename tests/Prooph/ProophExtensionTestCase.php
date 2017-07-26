@@ -36,6 +36,11 @@ abstract class ProophExtensionTestCase extends TestCase
 		return $this->container->getByType($classType);
 	}
 
+	protected function whenGetServiceByNameFromContainer($name)
+	{
+		return $this->container->getService($name);
+	}
+
 	protected function thenIsInstanceOfExpectedClass($expected, $actual): void
 	{
 		self::assertInstanceOf($expected, $actual);

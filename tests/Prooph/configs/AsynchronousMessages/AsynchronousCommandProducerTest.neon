@@ -1,0 +1,13 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	asynchronous_messaging:
+		commands:
+			bridge: "@producerBridge"
+			routes:
+				MessageName: producerRouteKey
+
+services:
+	producerBridge: LidskaSila\Prooph\Tests\AsynchronousMessages\FakeImplementations\TestAsynchronousMessageProducerBridge
+	- Prooph\Common\Messaging\NoOpMessageConverter

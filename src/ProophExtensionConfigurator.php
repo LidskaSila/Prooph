@@ -2,6 +2,7 @@
 
 namespace LidskaSila\Prooph;
 
+use LidskaSila\Prooph\AsynchronousMessages\AsynchronousMessagesConfigurator;
 use LidskaSila\Prooph\Common\CompositeConfigurator;
 use LidskaSila\Prooph\Common\Configurator;
 use LidskaSila\Prooph\EventSourcing\EventSourcingConfigurator;
@@ -13,6 +14,11 @@ class ProophExtensionConfigurator extends CompositeConfigurator
 
 	public const KEY = 'prooph';
 
+	public function getConfigKey(): ?string
+	{
+		return self::KEY;
+	}
+
 	/**
 	 * @return Configurator[]
 	 */
@@ -22,11 +28,7 @@ class ProophExtensionConfigurator extends CompositeConfigurator
 			new EventStoreConfigurator($this->extension),
 			new EventSourcingConfigurator($this->extension),
 			new ServiceBusesConfigurator($this->extension),
+			new AsynchronousMessagesConfigurator($this->extension),
 		];
-	}
-
-	public function getConfigKey(): ?string
-	{
-		return self::KEY;
 	}
 }
