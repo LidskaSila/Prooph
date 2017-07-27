@@ -41,7 +41,7 @@ class AsynchronousMessageProducer implements MessageProducer
 
 		$producerName = $this->getProducerRouteKey($message);
 
-		$this->producerBridge->publishToProducerOfName($producerName, $data);
+		$this->producerBridge->publishWithRoutingKey($producerName, $data);
 	}
 
 	private function arrayFromMessage(Message $message): array

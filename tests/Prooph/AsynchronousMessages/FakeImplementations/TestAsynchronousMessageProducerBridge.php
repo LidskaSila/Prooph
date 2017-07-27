@@ -7,16 +7,16 @@ use LidskaSila\Prooph\AsynchronousMessages\AsynchronousMessageProducerBridge;
 class TestAsynchronousMessageProducerBridge implements AsynchronousMessageProducerBridge
 {
 
-	public const KEY_PRODUCER_ROUTE_KEY = 'producer';
-	public const KEY_DATA               = 'data';
+	public const KEY_ROUTING_KEY = 'routingKey';
+	public const KEY_DATA        = 'data';
 
 	private $published = [];
 
-	public function publishToProducerOfName($producerName, $data): void
+	public function publishWithRoutingKey($routingKey, $data): void
 	{
 		$this->published[] = [
-			self::KEY_PRODUCER_ROUTE_KEY => $producerName,
-			self::KEY_DATA               => $data,
+			self::KEY_ROUTING_KEY => $routingKey,
+			self::KEY_DATA        => $data,
 		];
 	}
 

@@ -110,7 +110,7 @@ class AsynchronousMessageProducerTest extends TestCase
 		$publishedMessagesDump = $this->getPublishedEventsFromTestBridge();
 
 		self::assertCount(1, $publishedMessagesDump);
-		$publishedProducerRouteKey = $publishedMessagesDump[0][TestAsynchronousMessageProducerBridge::KEY_PRODUCER_ROUTE_KEY];
+		$publishedProducerRouteKey = $publishedMessagesDump[0][TestAsynchronousMessageProducerBridge::KEY_ROUTING_KEY];
 		$publishedMessageData      = $publishedMessagesDump[0][TestAsynchronousMessageProducerBridge::KEY_DATA];
 		self::assertEquals($publishedProducerRouteKey, $expectedProducerRouteKey);
 		self::assertEquals($publishedMessageData['message_name'], TestAggregateCreated::class);
