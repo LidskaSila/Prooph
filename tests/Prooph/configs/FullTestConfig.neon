@@ -1,5 +1,5 @@
 extensions:
-    prooph: LidskaSila\Prooph\ProophExtension
+	prooph: LidskaSila\Prooph\ProophExtension
 
 prooph:
 	event_sourcing:
@@ -16,6 +16,15 @@ prooph:
 		default:
 			plugins:
 				- Prooph\EventStoreBusBridge\EventPublisher
+	projection_manager:
+		use:
+			config: default
+			factory: Prooph\EventStore\Pdo\Container\MySqlProjectionManagerFactory
+		default:
+			event_store: @prooph.event_store
+			connection: @fakePDO # service id for the used pdo connection
+			event_streams_table: event_streams # event stream table to use, defaults to `event_streams`
+			projections_table: projections # projection table to use, defaults to `projections`
 	service_bus:
 		command_bus:
 			plugins:

@@ -7,6 +7,7 @@ use LidskaSila\Prooph\Common\CompositeConfigurator;
 use LidskaSila\Prooph\Common\Configurator;
 use LidskaSila\Prooph\EventSourcing\EventSourcingConfigurator;
 use LidskaSila\Prooph\EventStore\EventStoreConfigurator;
+use LidskaSila\Prooph\ProjectionManager\ProjectionManagerConfigurator;
 use LidskaSila\Prooph\ServiceBus\ServiceBusesConfigurator;
 
 class ProophExtensionConfigurator extends CompositeConfigurator
@@ -26,6 +27,7 @@ class ProophExtensionConfigurator extends CompositeConfigurator
 	{
 		return [
 			new EventStoreConfigurator($this->extension),
+			new ProjectionManagerConfigurator($this->extension),
 			new EventSourcingConfigurator($this->extension),
 			new ServiceBusesConfigurator($this->extension),
 			new AsynchronousMessagesConfigurator($this->extension),

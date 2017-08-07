@@ -1,0 +1,33 @@
+extensions:
+    prooph: LidskaSila\Prooph\ProophExtension
+
+prooph:
+	event_store:
+		use:
+			config: default
+			factory: Prooph\EventStore\Pdo\Container\MariaDbEventStoreFactory
+		default:
+			wrap_action_event_emitter: true
+			plugins:
+				- Prooph\EventStoreBusBridge\EventPublisher
+			connection: @fakePDO
+			persistence_strategy: Prooph\EventStore\Pdo\PersistenceStrategy\MariaDbSingleStreamStrategy
+			load_batch_size: 1000
+			event_streams_table: event_streams
+
+	projection_manager:
+		use:
+			config: default
+			factory: Prooph\EventStore\Pdo\Container\MariaDbProjectionManagerFactory
+		default:
+			event_store: @prooph.event_store
+			connection: @fakePDO # service id for the used pdo connection
+			event_streams_table: event_streams # event stream table to use, defaults to `event_streams`
+			projections_table: projections # projection table to use, defaults to `projections`
+services:
+	- Prooph\EventStoreBusBridge\EventPublisher
+	fakePDO:
+		factory: LidskaSila\Prooph\Tests\ProjectionManager\FakePDOFactory::create()
+	- Prooph\EventStore\Pdo\PersistenceStrategy\MariaDbSingleStreamStrategy
+	- Prooph\ServiceBus\Plugin\InvokeStrategy\HandleCommandStrategy
+	- Prooph\Common\Messaging\FQCNMessageFactory
